@@ -10,18 +10,18 @@ export const profile = {
   linkedin: 'https://www.linkedin.com/in/anusha-p-678a25251/',
   resumeUrl: '/Anusha-Payidiparthi-Resume.pdf',
   availability: 'Actively interviewing',
-  headline: 'Enterprise frontend systems that scale under real scrutiny.',
+  headline: 'I turn complex enterprise workflows into fast, secure, production-ready UI.',
   summary:
-    '10+ years shipping React, Angular, and Node platforms for Fortune 500 banking and telecom teams—secure, accessible, and release-ready.',
+    'Senior frontend engineer with 10+ years across banking, telecom, and tech. I lead React/Angular delivery, Node BFF layers, accessibility, and test automation for Fortune 500 teams.',
   mailto:
     'mailto:anushapayidiparthi406@gmail.com?subject=Senior%20Frontend%20Role%20%E2%80%94%20Anusha%20Payidiparthi&body=Hi%20Anusha%2C%0A%0AWe%20have%20a%20role%20that%20may%20be%20a%20fit.%0A%0A',
 };
 
 export const highlights = [
-  { value: '10+', label: 'Years in production UI' },
-  { value: '4', label: 'Fortune-facing platforms' },
-  { value: 'WCAG', label: 'Accessibility by default' },
-  { value: 'BFF', label: 'Node orchestration layer' },
+  { value: '10+', label: 'Years shipping production UI' },
+  { value: 'Fortune 500', label: 'Banking & telecom platforms' },
+  { value: '80%+', label: 'Test coverage on key modules' },
+  { value: 'Full-stack', label: 'React/Angular + Node BFF' },
 ];
 
 export const jobs = [
@@ -33,15 +33,31 @@ export const jobs = [
     location: 'San Francisco, CA',
     product: 'Banker Compass',
     tagline:
-      'Authentication-gated account workflows for bankers handling sensitive customer actions.',
-    points: [
-      'Shipped React + TypeScript interfaces for mission-critical banking transactions.',
-      'Built OTP and QR multi-factor flows that adapt to customer authentication status.',
-      'Owned Redux Saga state for sessions, audit filters, and reporting pathways.',
-      'Delivered a Node.js BFF to coordinate multi-service APIs with lower latency.',
-      'Raised release confidence with Jest, React Testing Library, and BDD automation.',
+      'Mission-critical banker platform for sensitive account actions—gated by dynamic multi-factor authentication.',
+    outcomes: [
+      { value: 'MFA-first', label: 'OTP + QR auth flows' },
+      { value: 'BFF', label: 'Multi-API orchestration' },
+      { value: 'TDD/BDD', label: 'Release quality gates' },
     ],
-    stack: ['React', 'TypeScript', 'Redux Saga', 'Node.js', 'Vite', 'Jest', 'Azure'],
+    points: [
+      'Architected and shipped React + TypeScript UI for high-risk banking workflows used by bankers in production.',
+      'Built adaptive OTP and QR authentication that chooses the right MFA path from customer status before account actions proceed.',
+      'Implemented Redux Saga for session, authentication, audit filters, and reporting—keeping complex state predictable under load.',
+      'Designed a Node.js BFF to fan out and reshape multiple microservice calls, reducing UI complexity and latency.',
+      'Partnered with UX in Figma to validate flows early, then enforced standards through code reviews and junior mentoring.',
+      'Strengthened release safety with Jest, React Testing Library, and BDD automation across critical paths.',
+      'Used GitHub Copilot to accelerate delivery while reviewing all AI-assisted code for security and compliance alignment.',
+    ],
+    stack: [
+      'React',
+      'TypeScript',
+      'Redux Saga',
+      'Node.js',
+      'Vite',
+      'Jest',
+      'Azure',
+      'Microservices',
+    ],
   },
   {
     id: 't-mobile',
@@ -51,14 +67,20 @@ export const jobs = [
     location: 'Hyderabad, India',
     product: 'Customer Service Platform',
     tagline:
-      'Plan registration, offers, and account history for customers and service-desk teams.',
-    points: [
-      'Built high-performance React + TypeScript UI for plan discovery and service workflows.',
-      'Designed Express BFF contracts for secure, low-latency frontend–backend communication.',
-      'Improved initial load with Webpack code-splitting and lazy-loading.',
-      'Embedded WCAG 2.1 accessibility into component specs and implementation.',
+      'Customer and service-desk experience for plans, offers, account history, and support workflows.',
+    outcomes: [
+      { value: 'Faster loads', label: 'Code-splitting + lazy routes' },
+      { value: 'WCAG 2.1', label: 'Inclusive UI foundation' },
+      { value: 'BFF', label: 'Secure API contracts' },
     ],
-    stack: ['React', 'TypeScript', 'Node.js', 'Express', 'MongoDB', 'Webpack'],
+    points: [
+      'Delivered React + TypeScript interfaces that helped customers and agents discover plans, offers, and account history.',
+      'Built an Express BFF with clear REST contracts so the UI stayed secure, thin, and low-latency.',
+      'Cut initial page weight with Webpack code-splitting and lazy-loading for heavier service flows.',
+      'Authored UI/component guidance with WCAG 2.1 baked in—so accessibility was part of the build, not a retrofit.',
+      'Aligned engineering, UX, QA, and DevOps across time zones on patterns that supported continuous delivery.',
+    ],
+    stack: ['React', 'TypeScript', 'Node.js', 'Express', 'MongoDB', 'Webpack', 'Figma'],
   },
   {
     id: 'berkadia',
@@ -68,14 +90,20 @@ export const jobs = [
     location: 'Hyderabad, India',
     product: 'Enterprise OCR Document Platform',
     tagline:
-      'Converted scanned mortgage documents into searchable, structured digital formats.',
-    points: [
-      'Delivered Angular 10 + TypeScript document upload, processing, and management workflows.',
-      'Built drag-and-drop uploads with live progress for large document volumes.',
-      'Implemented REST APIs for OCR processing and published OpenAPI / Swagger contracts.',
-      'Maintained 80%+ unit coverage with Jasmine and Karma.',
+      'Mortgage document automation—turning scanned files into searchable, structured digital records.',
+    outcomes: [
+      { value: '80%+', label: 'Unit test coverage' },
+      { value: 'OCR pipeline', label: 'Upload → process → search' },
+      { value: 'OpenAPI', label: 'Documented REST contracts' },
     ],
-    stack: ['Angular 10', 'TypeScript', 'Node.js', 'GraphQL', 'OpenAPI', 'Jasmine'],
+    points: [
+      'Owned Angular 10 + TypeScript experiences for document upload, processing status, and management at commercial-mortgage scale.',
+      'Built drag-and-drop uploads with progress feedback so large document batches were usable, not opaque.',
+      'Implemented Node/Express APIs for OCR processing and storage, plus OpenAPI/Swagger docs for cross-team adoption.',
+      'Drove reliability with Jasmine/Karma suites at 80%+ coverage and automated regression gates.',
+      'Improved processing efficiency by connecting async workflows to high-volume document intake.',
+    ],
+    stack: ['Angular 10', 'TypeScript', 'Node.js', 'GraphQL', 'OpenAPI', 'Jasmine', 'Karma'],
   },
   {
     id: 'microsoft',
@@ -85,13 +113,19 @@ export const jobs = [
     location: 'Hyderabad, India',
     product: 'Digital Transformation SPA',
     tagline:
-      'Enterprise collaboration and innovation-tracking experience with real-time workflows.',
-    points: [
-      'Built AngularJS SPAs with reusable directives, services, and filters.',
-      'Integrated REST services for interactive, real-time UI synchronization.',
-      'Hardened quality with Jasmine unit tests and cross-functional delivery.',
+      'Enterprise collaboration platform for innovation tracking and data-driven workflow visibility.',
+    outcomes: [
+      { value: 'SPA', label: 'Reusable UI architecture' },
+      { value: 'REST', label: 'Live data integration' },
+      { value: 'Quality', label: 'Jasmine-backed delivery' },
     ],
-    stack: ['AngularJS', 'JavaScript', 'REST', 'Jasmine'],
+    points: [
+      'Built AngularJS single-page applications that kept collaboration and innovation tracking interactive in real time.',
+      'Created reusable directives, services, and filters that reduced duplicate UI work across feature teams.',
+      'Integrated REST backends for live data flow and smoother cross-team handoffs.',
+      'Stabilized releases with Jasmine unit tests and close collaboration with product and QA.',
+    ],
+    stack: ['AngularJS', 'JavaScript', 'REST', 'Jasmine', 'Agile'],
   },
   {
     id: 'earlier',
@@ -99,12 +133,18 @@ export const jobs = [
     role: 'Software Developer',
     period: '2015 — 2016',
     location: 'India',
-    product: 'MEAN / MERN product work',
-    tagline: 'Hotel, e-commerce, and SaaS SPAs with API development and data modeling.',
+    product: 'MEAN / MERN product foundations',
+    tagline:
+      'Full-stack SPA delivery for hotel, e-commerce, and SaaS products—UI, APIs, and data models.',
+    outcomes: [
+      { value: 'MEAN', label: 'End-to-end ownership' },
+      { value: 'CRUD APIs', label: 'Express + MongoDB' },
+      { value: 'Agile', label: 'Sprint-based delivery' },
+    ],
     points: [
-      'Shipped AngularJS + Node applications with client routing and modular components.',
-      'Built Express REST APIs and MongoDB persistence with Mongoose.',
-      'Established Jasmine / Karma testing in Agile delivery cycles.',
+      'Shipped AngularJS + Node applications with routing, two-way binding, and modular UI components.',
+      'Built Express REST APIs and MongoDB/Mongoose models for reliable CRUD and persistence.',
+      'Set early quality habits with Jasmine/Karma tests inside Agile sprint delivery.',
     ],
     stack: ['AngularJS', 'Node.js', 'Express', 'MongoDB', 'Mongoose'],
   },
@@ -113,19 +153,37 @@ export const jobs = [
 export const skillGroups = [
   {
     title: 'Frontend',
-    items: ['React', 'Next.js', 'Angular', 'TypeScript', 'JavaScript', 'HTML/CSS', 'Tailwind', 'MUI'],
+    items: [
+      'React',
+      'Next.js',
+      'Angular / AngularJS',
+      'TypeScript',
+      'JavaScript',
+      'HTML/CSS/SCSS',
+      'Tailwind',
+      'Material UI',
+    ],
   },
   {
     title: 'Architecture',
-    items: ['Redux / Saga', 'NgRx', 'GraphQL', 'REST', 'WebSockets', 'Micro-frontends mindset'],
+    items: ['Redux / Saga', 'NgRx', 'GraphQL', 'REST', 'WebSockets', 'Microservices UI', 'BFF'],
   },
   {
     title: 'Full-stack',
-    items: ['Node.js', 'Express', 'MongoDB', 'PostgreSQL', 'MySQL', 'BFF patterns'],
+    items: ['Node.js', 'Express', 'MongoDB', 'PostgreSQL', 'MySQL'],
   },
   {
-    title: 'Delivery',
-    items: ['Jest', 'RTL', 'Cypress', 'CI/CD', 'Docker', 'Jenkins', 'GitHub Actions'],
+    title: 'Quality & Ops',
+    items: [
+      'Jest / RTL',
+      'Cypress',
+      'Jasmine / Karma',
+      'CI/CD',
+      'Docker',
+      'Jenkins',
+      'GitHub Actions',
+      'Datadog / Splunk',
+    ],
   },
 ];
 

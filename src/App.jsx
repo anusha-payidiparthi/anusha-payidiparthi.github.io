@@ -186,6 +186,7 @@ export default function App() {
               role="tabpanel"
               id={`${tabsId}-panel`}
               aria-labelledby={`${tabsId}-${activeJob.id}`}
+              key={activeJob.id}
             >
               <div className="job-panel__meta">
                 <p className="job-panel__role">{activeJob.role}</p>
@@ -195,6 +196,14 @@ export default function App() {
               <div className="job-panel__body">
                 <h3>{activeJob.product}</h3>
                 <p className="job-panel__tagline">{activeJob.tagline}</p>
+                <div className="job-panel__outcomes">
+                  {activeJob.outcomes.map((item) => (
+                    <div key={item.label}>
+                      <strong>{item.value}</strong>
+                      <span>{item.label}</span>
+                    </div>
+                  ))}
+                </div>
                 <ul>
                   {activeJob.points.map((point) => (
                     <li key={point}>{point}</li>

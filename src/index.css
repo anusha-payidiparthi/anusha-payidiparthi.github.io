@@ -601,6 +601,30 @@ a {
   max-width: 40rem;
 }
 
+.job-panel__outcomes {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.85rem;
+  margin: 0 0 1.35rem;
+  padding: 1rem 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.job-panel__outcomes strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  letter-spacing: -0.03em;
+  margin-bottom: 0.2rem;
+}
+
+.job-panel__outcomes span {
+  color: var(--slate);
+  font-size: 0.82rem;
+  line-height: 1.35;
+}
+
 .job-panel__body ul {
   margin: 0;
   padding-left: 1.1rem;
@@ -790,6 +814,10 @@ a {
   .job-panel {
     grid-template-columns: 1fr;
     gap: 1.5rem;
+  }
+
+  .job-panel__outcomes {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .skills {
