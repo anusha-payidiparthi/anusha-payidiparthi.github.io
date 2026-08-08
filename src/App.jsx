@@ -100,7 +100,7 @@ export default function App() {
               <p className="hero__summary">{profile.summary}</p>
               <div className="hero__actions">
                 <a className="btn btn--primary" href={profile.mailto}>
-                  Email recruiter intro
+                  Email me
                 </a>
                 <a
                   className="btn btn--ghost"
@@ -142,7 +142,7 @@ export default function App() {
         <section className="section shell" id="work" aria-labelledby="work-title">
           <div className="section__head">
             <p className="eyebrow">Featured work</p>
-            <h2 id="work-title">The work recruiters ask about first.</h2>
+            <h2 id="work-title">Selected experience</h2>
           </div>
 
           <article className="feature">
@@ -210,8 +210,7 @@ export default function App() {
             <p className="eyebrow eyebrow--light">Let’s talk</p>
             <h2 id="contact-title">Hiring for a senior frontend or full-stack role?</h2>
             <p className="contact__lead">
-              I’m actively looking. Reach out directly—most recruiter conversations start with a
-              short email or LinkedIn note.
+              I’m actively looking. The fastest way to reach me is email, phone, or LinkedIn.
             </p>
             <div className="contact__actions">
               <a className="btn btn--light" href={profile.mailto}>
