@@ -1,222 +1,234 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
+  companies,
   education,
   experience,
+  featured,
   highlights,
   profile,
   skillGroups,
 } from './data';
 import './index.css';
 
-function useReveal() {
-  const ref = useRef(null);
-
-  useEffect(() => {
-    const node = ref.current;
-    if (!node) return undefined;
-
-    const items = node.querySelectorAll('[data-reveal]');
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      items.forEach((item) => item.classList.add('is-visible'));
-      return undefined;
-    }
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.18, rootMargin: '0px 0px -8% 0px' },
-    );
-
-    items.forEach((item) => observer.observe(item));
-    return () => observer.disconnect();
-  }, []);
-
-  return ref;
+function HeroVisual() {
+  return (
+    <div className="hero-visual" aria-hidden="true">
+      <div className="hero-visual__glow" />
+      <div className="hero-visual__panel hero-visual__panel--back">
+        <div className="hero-visual__chrome">
+          <span />
+          <span />
+          <span />
+        </div>
+        <div className="hero-visual__rows">
+          <i />
+          <i />
+          <i />
+          <i />
+        </div>
+      </div>
+      <div className="hero-visual__panel hero-visual__panel--front">
+        <div className="hero-visual__label">Banker Compass</div>
+        <div className="hero-visual__auth">
+          <div className="hero-visual__auth-title">MFA gate</div>
+          <div className="hero-visual__bars">
+            <b />
+            <b />
+            <b className="is-accent" />
+          </div>
+          <div className="hero-visual__status">Verified · Ready for action</div>
+        </div>
+        <div className="hero-visual__metrics">
+          <div>
+            <strong>OTP</strong>
+            <span>Secure</span>
+          </div>
+          <div>
+            <strong>QR</strong>
+            <span>Adaptive</span>
+          </div>
+          <div>
+            <strong>BFF</strong>
+            <span>Orchestrated</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export default function App() {
   const [scrolled, setScrolled] = useState(false);
-  const experienceRef = useReveal();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12);
+    const onScroll = () => setScrolled(window.scrollY > 20);
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
   return (
-    <>
-      <header className={`site-header${scrolled ? ' is-scrolled' : ''}`}>
-        <div className="site-shell nav">
-          <a className="brand-mark" href="#top">
-            Anusha <span>Payidiparthi</span>
+    <div className="page">
+      <header className={`topbar${scrolled ? ' is-scrolled' : ''}`}>
+        <div className="shell topbar__inner">
+          <a className="logo" href="#top">
+            {profile.firstName}
+            <span>{profile.lastName}</span>
           </a>
-          <nav aria-label="Primary">
-            <ul className="nav-links">
-              <li>
-                <a href="#work">Work</a>
-              </li>
-              <li>
-                <a href="#skills">Skills</a>
-              </li>
-              <li>
-                <a href="#about">About</a>
-              </li>
-              <li>
-                <a href="#contact">Contact</a>
-              </li>
-            </ul>
+          <nav className="topbar__nav" aria-label="Primary">
+            <a href="#work">Work</a>
+            <a href="#skills">Skills</a>
+            <a href="#contact">Contact</a>
           </nav>
-          <a className="nav-cta" href={`mailto:${profile.email}`}>
-            Hire me
+          <a className="topbar__cta" href={profile.mailto}>
+            Get in touch
           </a>
         </div>
       </header>
 
       <main id="top">
-        <section className="hero site-shell" aria-label="Introduction">
-          <div className="hero-atmosphere" aria-hidden="true" />
-          <div className="hero-content">
-            <p className="availability">{profile.availability}</p>
-            <h1 className="hero-name">{profile.name}</h1>
-            <p className="hero-title">{profile.title}</p>
-            <p className="hero-copy">{profile.summary}</p>
-            <div className="hero-actions">
-              <a className="btn btn-primary" href={`mailto:${profile.email}`}>
-                Email me
+        <section className="hero">
+          <div className="shell hero__grid">
+            <div className="hero__copy">
+              <p className="hero__kicker">{profile.availability}</p>
+              <h1 className="hero__name">
+                <span>{profile.firstName}</span>
+                <span>{profile.lastName}</span>
+              </h1>
+              <p className="hero__role">{profile.title}</p>
+              <p className="hero__headline">{profile.headline}</p>
+              <p className="hero__summary">{profile.summary}</p>
+              <div className="hero__actions">
+                <a className="btn btn--primary" href={profile.mailto}>
+                  Email recruiter intro
+                </a>
+                <a
+                  className="btn btn--ghost"
+                  href={profile.linkedin}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  LinkedIn
+                </a>
+                <a className="btn btn--ghost" href={profile.resumeUrl} download>
+                  Resume PDF
+                </a>
+              </div>
+            </div>
+            <HeroVisual />
+          </div>
+        </section>
+
+        <section className="trust" aria-label="Companies">
+          <div className="shell trust__inner">
+            <p className="trust__label">Trusted in production at</p>
+            <ul className="trust__list">
+              {companies.map((company) => (
+                <li key={company}>{company}</li>
+              ))}
+            </ul>
+          </div>
+        </section>
+
+        <section className="proof shell" aria-label="Highlights">
+          {highlights.map((item) => (
+            <article key={item.label} className="proof__item">
+              <strong>{item.value}</strong>
+              <span>{item.label}</span>
+            </article>
+          ))}
+        </section>
+
+        <section className="section shell" id="work" aria-labelledby="work-title">
+          <div className="section__head">
+            <p className="eyebrow">Featured work</p>
+            <h2 id="work-title">The work recruiters ask about first.</h2>
+          </div>
+
+          <article className="feature">
+            <div className="feature__meta">
+              <p className="feature__company">{featured.company}</p>
+              <p className="feature__role">
+                {featured.role} · {featured.period}
+              </p>
+              <p className="feature__location">{featured.location}</p>
+            </div>
+            <div className="feature__body">
+              <h3>{featured.product}</h3>
+              <p className="feature__tagline">{featured.tagline}</p>
+              <ul>
+                {featured.points.map((point) => (
+                  <li key={point}>{point}</li>
+                ))}
+              </ul>
+              <div className="feature__stack">
+                {featured.stack.map((tech) => (
+                  <span key={tech}>{tech}</span>
+                ))}
+              </div>
+            </div>
+          </article>
+
+          <div className="career">
+            <h3 className="career__title">Career path</h3>
+            <ol className="career__list">
+              {experience.map((job) => (
+                <li key={`${job.company}-${job.period}`}>
+                  <div className="career__side">
+                    <strong>{job.company}</strong>
+                    <span>
+                      {job.role} · {job.period}
+                    </span>
+                  </div>
+                  <p>{job.detail}</p>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </section>
+
+        <section className="section shell" id="skills" aria-labelledby="skills-title">
+          <div className="section__head">
+            <p className="eyebrow">Capabilities</p>
+            <h2 id="skills-title">A stack built for senior delivery.</h2>
+          </div>
+          <div className="skills">
+            {skillGroups.map((group) => (
+              <div key={group.title} className="skills__group">
+                <h3>{group.title}</h3>
+                <p>{group.items.join('  ·  ')}</p>
+              </div>
+            ))}
+          </div>
+          <p className="education">
+            {education.degree} · {education.school} · {education.year}
+          </p>
+        </section>
+
+        <section className="contact" id="contact" aria-labelledby="contact-title">
+          <div className="shell contact__inner">
+            <p className="eyebrow eyebrow--light">Let’s talk</p>
+            <h2 id="contact-title">Hiring for a senior frontend or full-stack role?</h2>
+            <p className="contact__lead">
+              I’m actively looking. Reach out directly—most recruiter conversations start with a
+              short email or LinkedIn note.
+            </p>
+            <div className="contact__actions">
+              <a className="btn btn--light" href={profile.mailto}>
+                {profile.email}
+              </a>
+              <a className="btn btn--outline-light" href={profile.phoneHref}>
+                {profile.phone}
               </a>
               <a
-                className="btn btn-secondary"
+                className="btn btn--outline-light"
                 href={profile.linkedin}
                 target="_blank"
                 rel="noreferrer"
               >
                 LinkedIn
               </a>
-              <a className="btn btn-secondary" href={profile.resumeUrl} download>
-                Download resume
-              </a>
-            </div>
-          </div>
-        </section>
-
-        <section className="section site-shell" id="about" aria-labelledby="about-heading">
-          <div className="section-heading">
-            <p className="section-eyebrow">Impact</p>
-            <h2 id="about-heading">Built for enterprise scale, clarity, and delivery speed.</h2>
-            <p>
-              From Wells Fargo banker workflows to telecom customer platforms, I turn complex
-              product requirements into resilient React and Angular experiences — with strong
-              testing, accessibility, and CI/CD discipline.
-            </p>
-          </div>
-          <div className="highlights">
-            {highlights.map((item) => (
-              <article className="highlight" key={item.label}>
-                <strong>{item.value}</strong>
-                <span>{item.label}</span>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section className="section site-shell" id="work" aria-labelledby="work-heading">
-          <div className="section-heading">
-            <p className="section-eyebrow">Experience</p>
-            <h2 id="work-heading">Selected roles & products</h2>
-            <p>
-              A track record across Fortune 500 banking, telecom, mortgage tech, and Microsoft
-              digital platforms.
-            </p>
-          </div>
-          <div className="experience-list" ref={experienceRef}>
-            {experience.map((job) => (
-              <article className="experience-item" data-reveal key={`${job.company}-${job.period}`}>
-                <div className="experience-meta">
-                  <h3>{job.company}</h3>
-                  <p className="experience-role">{job.role}</p>
-                  <p className="experience-period">{job.period}</p>
-                  <p className="experience-location">{job.location}</p>
-                </div>
-                <div className="experience-body">
-                  <h4>{job.project}</h4>
-                  <p>{job.blurb}</p>
-                  <ul>
-                    {job.impact.map((point) => (
-                      <li key={point}>{point}</li>
-                    ))}
-                  </ul>
-                  <div className="stack" aria-label={`${job.company} tech stack`}>
-                    {job.stack.map((tech) => (
-                      <span key={tech}>{tech}</span>
-                    ))}
-                  </div>
-                </div>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section className="section site-shell" id="skills" aria-labelledby="skills-heading">
-          <div className="section-heading">
-            <p className="section-eyebrow">Capabilities</p>
-            <h2 id="skills-heading">Tools I use to ship</h2>
-            <p>
-              Modern frontend architecture, full-stack Node delivery, and production-grade
-              quality systems.
-            </p>
-          </div>
-          <div className="skills-grid">
-            {skillGroups.map((group) => (
-              <div className="skill-group" key={group.title}>
-                <h3>{group.title}</h3>
-                <ul>
-                  {group.items.map((skill) => (
-                    <li key={skill}>{skill}</li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-          <div className="education" style={{ marginTop: '2.5rem' }}>
-            <h3>{education.degree}</h3>
-            <p>
-              {education.school} · {education.year}
-            </p>
-          </div>
-        </section>
-
-        <section className="section site-shell" id="contact" aria-labelledby="contact-heading">
-          <div className="contact-panel">
-            <div>
-              <p className="section-eyebrow">Contact</p>
-              <h2 id="contact-heading">Let’s talk about your next frontend or full-stack role.</h2>
-              <p>
-                Based in the {profile.location}. Fastest path: email or LinkedIn. Resume is ready
-                to download for recruiting screens.
-              </p>
-              <div className="hero-actions" style={{ marginTop: '1.25rem' }}>
-                <a className="btn btn-primary" href={`mailto:${profile.email}`}>
-                  {profile.email}
-                </a>
-                <a className="btn btn-secondary" href={profile.resumeUrl} download>
-                  Resume PDF
-                </a>
-              </div>
-            </div>
-            <div className="contact-links">
-              <a href={`tel:${profile.phone.replaceAll('-', '')}`}>{profile.phone}</a>
-              <a href={profile.linkedin} target="_blank" rel="noreferrer">
-                LinkedIn profile
-              </a>
-              <a href={profile.resumeUrl} download>
+              <a className="btn btn--outline-light" href={profile.resumeUrl} download>
                 Download resume
               </a>
             </div>
@@ -224,10 +236,31 @@ export default function App() {
         </section>
       </main>
 
-      <footer className="site-footer site-shell">
-        <span>© {new Date().getFullYear()} {profile.name}</span>
-        <span>Senior Frontend & Full-Stack Developer</span>
+      <footer className="footer shell">
+        <span>
+          © {new Date().getFullYear()} {profile.name}
+        </span>
+        <span>{profile.location}</span>
       </footer>
-    </>
+
+      <div className="reach" role="region" aria-label="Quick contact">
+        <div className="shell reach__inner">
+          <p>
+            <strong>{profile.availability}</strong>
+            <span>Senior Frontend · Full-Stack</span>
+          </p>
+          <div className="reach__links">
+            <a href={profile.mailto}>Email</a>
+            <a href={profile.phoneHref}>Call</a>
+            <a href={profile.linkedin} target="_blank" rel="noreferrer">
+              LinkedIn
+            </a>
+            <a href={profile.resumeUrl} download>
+              Resume
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
