@@ -1,13 +1,5 @@
-import { useEffect, useState } from 'react';
-import {
-  companies,
-  education,
-  experience,
-  featured,
-  highlights,
-  profile,
-  skillGroups,
-} from './data';
+import { useEffect, useId, useState } from 'react';
+import { education, highlights, jobs, profile, skillGroups } from './data';
 import './index.css';
 
 function HeroVisual() {
@@ -59,6 +51,9 @@ function HeroVisual() {
 
 export default function App() {
   const [scrolled, setScrolled] = useState(false);
+  const [activeJobId, setActiveJobId] = useState(jobs[0].id);
+  const tabsId = useId();
+  const activeJob = jobs.find((job) => job.id === activeJobId) ?? jobs[0];
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -66,6 +61,11 @@ export default function App() {
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
+
+  const selectCompany = (jobId) => {
+    setActiveJobId(jobId);
+    document.getElementById('work')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
 
   return (
     <div className="page">
@@ -121,12 +121,21 @@ export default function App() {
 
         <section className="trust" aria-label="Companies">
           <div className="shell trust__inner">
-            <p className="trust__label">Trusted in production at</p>
-            <ul className="trust__list">
-              {companies.map((company) => (
-                <li key={company}>{company}</li>
-              ))}
-            </ul>
+            <p className="trust__label">Worked with</p>
+            <div className="trust__list">
+              {jobs
+                .filter((job) => job.id !== 'earlier')
+                .map((job) => (
+                  <button
+                    key={job.id}
+                    type="button"
+                    className={`trust__company${activeJobId === job.id ? ' is-active' : ''}`}
+                    onClick={() => selectCompany(job.id)}
+                  >
+                    {job.company}
+                  </button>
+                ))}
+            </div>
           </div>
         </section>
 
@@ -141,56 +150,70 @@ export default function App() {
 
         <section className="section shell" id="work" aria-labelledby="work-title">
           <div className="section__head">
-            <p className="eyebrow">Featured work</p>
-            <h2 id="work-title">Selected experience</h2>
+            <p className="eyebrow">Work history</p>
+            <h2 id="work-title">Experience</h2>
           </div>
 
-          <article className="feature">
-            <div className="feature__meta">
-              <p className="feature__company">{featured.company}</p>
-              <p className="feature__role">
-                {featured.role} · {featured.period}
-              </p>
-              <p className="feature__location">{featured.location}</p>
+          <div className="job-tabs">
+            <div
+              className="job-tabs__list"
+              role="tablist"
+              aria-label="Companies"
+            >
+              {jobs.map((job) => {
+                const selected = job.id === activeJobId;
+                return (
+                  <button
+                    key={job.id}
+                    type="button"
+                    role="tab"
+                    id={`${tabsId}-${job.id}`}
+                    className={`job-tabs__tab${selected ? ' is-active' : ''}`}
+                    aria-selected={selected}
+                    aria-controls={`${tabsId}-panel`}
+                    tabIndex={selected ? 0 : -1}
+                    onClick={() => setActiveJobId(job.id)}
+                  >
+                    <span className="job-tabs__company">{job.company}</span>
+                    <span className="job-tabs__period">{job.period}</span>
+                  </button>
+                );
+              })}
             </div>
-            <div className="feature__body">
-              <h3>{featured.product}</h3>
-              <p className="feature__tagline">{featured.tagline}</p>
-              <ul>
-                {featured.points.map((point) => (
-                  <li key={point}>{point}</li>
-                ))}
-              </ul>
-              <div className="feature__stack">
-                {featured.stack.map((tech) => (
-                  <span key={tech}>{tech}</span>
-                ))}
-              </div>
-            </div>
-          </article>
 
-          <div className="career">
-            <h3 className="career__title">Career path</h3>
-            <ol className="career__list">
-              {experience.map((job) => (
-                <li key={`${job.company}-${job.period}`}>
-                  <div className="career__side">
-                    <strong>{job.company}</strong>
-                    <span>
-                      {job.role} · {job.period}
-                    </span>
-                  </div>
-                  <p>{job.detail}</p>
-                </li>
-              ))}
-            </ol>
+            <article
+              className="job-panel"
+              role="tabpanel"
+              id={`${tabsId}-panel`}
+              aria-labelledby={`${tabsId}-${activeJob.id}`}
+            >
+              <div className="job-panel__meta">
+                <p className="job-panel__role">{activeJob.role}</p>
+                <p className="job-panel__location">{activeJob.location}</p>
+                <p className="job-panel__period">{activeJob.period}</p>
+              </div>
+              <div className="job-panel__body">
+                <h3>{activeJob.product}</h3>
+                <p className="job-panel__tagline">{activeJob.tagline}</p>
+                <ul>
+                  {activeJob.points.map((point) => (
+                    <li key={point}>{point}</li>
+                  ))}
+                </ul>
+                <div className="job-panel__stack">
+                  {activeJob.stack.map((tech) => (
+                    <span key={tech}>{tech}</span>
+                  ))}
+                </div>
+              </div>
+            </article>
           </div>
         </section>
 
         <section className="section shell" id="skills" aria-labelledby="skills-title">
           <div className="section__head">
             <p className="eyebrow">Capabilities</p>
-            <h2 id="skills-title">A stack built for senior delivery.</h2>
+            <h2 id="skills-title">Skills</h2>
           </div>
           <div className="skills">
             {skillGroups.map((group) => (
