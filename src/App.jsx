@@ -110,8 +110,12 @@ export default function App() {
                 >
                   LinkedIn
                 </a>
-                <a className="btn btn--ghost" href={profile.resumeUrl} download>
-                  Resume PDF
+                <a
+                  className="btn btn--ghost"
+                  href={profile.resumeUrl}
+                  download={profile.resumeFileName}
+                >
+                  Download resume
                 </a>
               </div>
             </div>
@@ -259,7 +263,11 @@ export default function App() {
               >
                 LinkedIn
               </a>
-              <a className="btn btn--outline-light" href={profile.resumeUrl} download>
+              <a
+                className="btn btn--outline-light"
+                href={profile.resumeUrl}
+                download={profile.resumeFileName}
+              >
                 Download resume
               </a>
             </div>
@@ -286,7 +294,7 @@ export default function App() {
             <a href={profile.linkedin} target="_blank" rel="noreferrer">
               LinkedIn
             </a>
-            <a href={profile.resumeUrl} download>
+            <a href={profile.resumeUrl} download={profile.resumeFileName}>
               Resume
             </a>
           </div>

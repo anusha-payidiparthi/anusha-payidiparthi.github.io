@@ -1,0 +1,610 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Anusha Payidiparthi — Resume</title>
+    <style>
+      :root {
+        --ink: #102033;
+        --muted: #4d5d6d;
+        --line: #d5dee8;
+        --paper: #ffffff;
+        --navy: #0b1f33;
+        --teal: #0d7a76;
+        --teal-soft: #e7f4f3;
+        --rule: #c5d0db;
+      }
+
+      * { box-sizing: border-box; }
+      html, body { margin: 0; padding: 0; background: #dce3ea; }
+      body {
+        font-family: "Liberation Sans", "Calibri", "Segoe UI", Arial, sans-serif;
+        color: var(--ink);
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      .toolbar {
+        position: sticky;
+        top: 0;
+        z-index: 5;
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        padding: 12px;
+        background: #0b1f33;
+        color: #fff;
+        font-size: 13px;
+      }
+      .toolbar a, .toolbar button {
+        color: #fff;
+        background: #0d7a76;
+        border: 0;
+        border-radius: 6px;
+        padding: 8px 14px;
+        cursor: pointer;
+        text-decoration: none;
+        font: inherit;
+      }
+
+      .stage {
+        width: 8.5in;
+        margin: 18px auto 40px;
+      }
+
+      .sheet {
+        width: 8.5in;
+        height: 11in;
+        background: var(--paper);
+        padding: 0.46in 0.52in 0.42in;
+        margin: 0 0 18px;
+        box-shadow: 0 10px 30px rgba(11, 31, 51, 0.12);
+        overflow: hidden;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .sheet-body { flex: 1; }
+      .sheet-foot {
+        display: flex;
+        justify-content: space-between;
+        font-size: 8.2pt;
+        color: #6a7a8a;
+        border-top: 1px solid var(--line);
+        padding-top: 6px;
+        margin-top: 8px;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 22.5pt;
+        letter-spacing: 0.08em;
+        font-weight: 700;
+        color: #fff;
+        line-height: 1;
+      }
+      .masthead {
+        background: var(--navy);
+        color: #fff;
+        margin: -0.46in -0.52in 12px;
+        padding: 16px 0.52in 14px;
+      }
+      .masthead .role {
+        margin: 7px 0 8px;
+        font-size: 10.4pt;
+        letter-spacing: 0.04em;
+        color: #d7eceb;
+        font-weight: 600;
+      }
+      .masthead .contact {
+        font-size: 8.7pt;
+        color: #d5e0ea;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px 14px;
+      }
+      .masthead .contact a { color: #d5e0ea; text-decoration: none; }
+      .accent {
+        height: 4px;
+        background: var(--teal);
+        margin: -12px -0.52in 11px;
+      }
+
+      h2 {
+        margin: 0 0 6px;
+        font-size: 9.6pt;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--teal);
+        border-bottom: 1.5px solid var(--teal);
+        padding-bottom: 3px;
+      }
+      h3 {
+        margin: 0;
+        font-size: 10.3pt;
+        color: var(--navy);
+      }
+      p, li { font-size: 9.15pt; line-height: 1.33; }
+      p { margin: 0 0 8px; }
+      ul { margin: 4px 0 8px; padding-left: 16px; }
+      li { margin: 0 0 3.5px; }
+      .muted { color: var(--muted); }
+      .job-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 12px;
+        margin-top: 2px;
+      }
+      .job-meta {
+        display: flex;
+        justify-content: space-between;
+        font-size: 8.9pt;
+        color: var(--muted);
+        margin: 1px 0 4px;
+      }
+      .scope {
+        font-size: 9.1pt;
+        color: #243546;
+        margin-bottom: 5px;
+      }
+      .chips { display: flex; flex-wrap: wrap; gap: 4px; margin: 6px 0 2px; }
+      .chip {
+        font-size: 7.6pt;
+        background: var(--teal-soft);
+        color: #0b4f4d;
+        border-radius: 3px;
+        padding: 2px 6px;
+        font-weight: 600;
+      }
+      .skills-grid {
+        display: grid;
+        grid-template-columns: 1.35in 1fr;
+        gap: 3px 10px;
+        margin: 6px 0 10px;
+        font-size: 8.85pt;
+        line-height: 1.32;
+      }
+      .skills-grid dt {
+        font-weight: 700;
+        color: var(--navy);
+      }
+      .skills-grid dd { margin: 0; color: #243546; }
+      .comp-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3px 18px;
+        margin: 6px 0 10px;
+        font-size: 8.85pt;
+      }
+      .comp-grid div::before {
+        content: "";
+        display: inline-block;
+        width: 6px;
+        height: 6px;
+        background: var(--teal);
+        margin-right: 7px;
+        border-radius: 1px;
+        transform: translateY(-1px);
+      }
+      .two-col {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px 18px;
+      }
+      .align-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 8.7pt;
+        margin: 4px 0 8px;
+      }
+      .align-table th, .align-table td {
+        border: 1px solid var(--line);
+        padding: 5px 7px;
+        vertical-align: top;
+        text-align: left;
+      }
+      .align-table th {
+        background: var(--navy);
+        color: #fff;
+        font-weight: 650;
+        font-size: 8.2pt;
+        letter-spacing: 0.04em;
+      }
+      .align-table tr:nth-child(even) td { background: #f6f9fb; }
+      .kicker {
+        font-size: 8.4pt;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--teal);
+        margin: 8px 0 3px;
+      }
+      .edu {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        font-size: 9.2pt;
+        margin-top: 4px;
+      }
+
+      @media print {
+        .toolbar { display: none !important; }
+        html, body { background: #fff; }
+        .stage { width: auto; margin: 0; }
+        .sheet {
+          box-shadow: none;
+          margin: 0;
+          page-break-after: always;
+          break-after: page;
+        }
+        .sheet:last-child {
+          page-break-after: auto;
+          break-after: auto;
+        }
+        @page { size: letter; margin: 0; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="toolbar">
+      <span>Anusha Payidiparthi — 5-page resume</span>
+      <button type="button" onclick="window.print()">Print / Save PDF</button>
+      <a href="./Anusha-Payidiparthi-Resume.pdf" download>Download PDF</a>
+    </div>
+
+    <main class="stage">
+      <!-- PAGE 1 -->
+      <section class="sheet" aria-label="Page 1">
+        <div class="sheet-body">
+          <header class="masthead">
+            <h1>ANUSHA PAYIDIPARTHI</h1>
+            <p class="role">Senior Full-Stack Developer &nbsp;|&nbsp; React.js &nbsp;·&nbsp; Java / Spring &nbsp;·&nbsp; Microservices &nbsp;·&nbsp; REST / GraphQL</p>
+            <div class="contact">
+              <span>341-356-2072</span>
+              <a href="mailto:payidiparthianusha@gmail.com">payidiparthianusha@gmail.com</a>
+              <a href="https://www.linkedin.com/in/anusha-p-678a25251/">linkedin.com/in/anusha-p-678a25251</a>
+              <span>San Francisco Bay Area</span>
+              <span>Open to Remote / Hybrid / Onsite</span>
+            </div>
+          </header>
+          <div class="accent"></div>
+
+          <h2>Professional Summary</h2>
+          <p>
+            Senior Full-Stack Developer with 10+ years of hands-on enterprise application development for Fortune 500 clients across Banking, Telecom, and Technology. Strong React.js ownership—component architecture, TypeScript, Redux Toolkit, React Query, and accessible SPA delivery—paired with full-stack work on RESTful APIs, GraphQL, MongoDB, and Node.js services. Regular partner to Java / J2EE / Spring Boot microservice teams, integrating Spring MVC and Spring JDBC-backed APIs and Apache Kafka–driven event data into secure, high-traffic user experiences. Skilled in application design, requirement analysis, web security, WCAG accessibility, cross-browser compatibility, and Agile / Scrum delivery. Uses AI technologies (GitHub Copilot, Cursor) to accelerate implementation, refactoring, and reviews while protecting quality and compliance.
+          </p>
+
+          <h2>Technical Skills</h2>
+          <dl class="skills-grid">
+            <dt>React.js</dt>
+            <dd>React.js, TypeScript, JavaScript (ES6+), Redux Toolkit, React Query, Hooks, Context API, custom hooks, reusable component libraries, SPA architecture, HTML5, CSS3, SCSS, Bootstrap, Webpack, Vite</dd>
+            <dt>Java / Spring</dt>
+            <dd>Java, J2EE, Servlets, Spring, Spring MVC, Spring JDBC, Spring Boot, enterprise microservices integration, API contract collaboration, session and security alignment with Java backends</dd>
+            <dt>APIs &amp; data</dt>
+            <dd>RESTful APIs, GraphQL, OpenAPI / Swagger, Axios / Fetch, JSON, MongoDB, Mongoose, MySQL, PostgreSQL, SQL / NoSQL modeling, database interactions</dd>
+            <dt>Messaging</dt>
+            <dd>Apache Kafka event-driven integration, near-real-time UI refresh from Kafka-backed topics via API gateways and BFF layers</dd>
+            <dt>AI technologies</dt>
+            <dd>GitHub Copilot, Cursor — AI-assisted coding, refactoring, debugging, test authoring, and code review acceleration</dd>
+            <dt>Quality &amp; delivery</dt>
+            <dd>Jest, React Testing Library, Cypress, Jasmine, Karma, TDD / BDD, Git, GitHub, GitLab, Jenkins, Docker, Azure DevOps, CI/CD, JIRA, Postman, Agile / Scrum</dd>
+            <dt>UX &amp; security</dt>
+            <dd>WCAG 2.1 accessibility, cross-browser compatibility (Chrome, Edge, Safari, Firefox), MFA / OTP / QR auth UI, XSS / CSRF awareness, secure token handling, responsive design</dd>
+          </dl>
+
+          <h2>Core Competencies</h2>
+          <div class="comp-grid">
+            <div>React.js — strong hands-on experience</div>
+            <div>Java / J2EE / Servlets (enterprise integration)</div>
+            <div>Spring / Spring MVC / Spring JDBC</div>
+            <div>Spring Boot &amp; microservices</div>
+            <div>RESTful APIs &amp; GraphQL</div>
+            <div>Apache Kafka</div>
+            <div>MongoDB &amp; database interactions</div>
+            <div>AI technologies</div>
+            <div>Enterprise application development</div>
+            <div>Application design &amp; requirement analysis</div>
+            <div>Web security, accessibility &amp; cross-browser compatibility</div>
+            <div>Agile / Scrum methodologies</div>
+          </div>
+
+          <h2>Professional Experience</h2>
+          <div class="job-head">
+            <h3>Wells Fargo</h3>
+            <strong style="font-size:9.2pt;color:#0b1f33;">Dec 2021 – Present</strong>
+          </div>
+          <div class="job-meta">
+            <span>Senior Frontend / Full-Stack Developer</span>
+            <span>San Francisco, CA</span>
+          </div>
+          <p class="scope">
+            Own end-to-end React UI and BFF delivery for secure, high-traffic banking workflows—authentication, reusable forms, and data-heavy reporting—integrated with Java Spring Boot REST microservices and event-driven data feeds.
+          </p>
+          <ul>
+            <li>Architected and shipped production React.js + TypeScript applications using Hooks, functional components, and modular patterns for mission-critical banker workflows used at enterprise scale.</li>
+            <li>Led application design and requirement analysis with product, UX, risk, and Java microservice teams—converting business rules into stories, acceptance criteria, UI flows, and API contracts.</li>
+            <li>Built secure authentication UIs (OTP and QR verification) aligned with enterprise web security, session handling, and compliance standards.</li>
+          </ul>
+        </div>
+        <footer class="sheet-foot"><span>Anusha Payidiparthi · Senior Full-Stack Developer</span><span>Page 1 of 5</span></footer>
+      </section>
+
+      <!-- PAGE 2 -->
+      <section class="sheet" aria-label="Page 2">
+        <div class="sheet-body">
+          <div class="job-head">
+            <h3>Wells Fargo — continued</h3>
+            <strong style="font-size:9.2pt;">Dec 2021 – Present</strong>
+          </div>
+          <p class="kicker">React.js architecture, APIs, Java / Spring collaboration, Kafka, security &amp; delivery</p>
+          <ul>
+            <li>Designed reusable dynamic form systems with real-time validation, reducing duplicated form logic and speeding feature delivery across multiple Agile squads.</li>
+            <li>Implemented Redux / Redux Toolkit for sessions, auth state, audit filters, and reporting, creating predictable, scalable client-state architecture.</li>
+            <li>Integrated RESTful APIs and GraphQL operations via Axios/Fetch and React Query (caching, background refresh, custom hooks), keeping data-heavy screens responsive under load.</li>
+            <li>Collaborated with Spring Boot microservice owners on resource design, error contracts, and payload shape—aligning React clients with Spring MVC controllers and Spring JDBC–backed data services.</li>
+            <li>Applied working knowledge of Java / J2EE / Servlet session, filter, and security behavior when diagnosing auth, CSRF, and API gateway issues across the banking stack.</li>
+            <li>Delivered near-real-time reporting and alert experiences fed by Apache Kafka topics (audit events, account alerts, processing status) surfaced through API gateways and a Node.js BFF.</li>
+            <li>Designed a Node.js BFF to fan out and reshape multiple Java microservice calls, reducing UI complexity, over-fetching, and perceived latency.</li>
+            <li>Improved perceived performance with lazy loading, code splitting, memoization, and render optimization on data-intensive screens serving large concurrent user bases.</li>
+            <li>Enforced WCAG 2.1 accessibility (keyboard paths, ARIA, focus order, contrast) and verified cross-browser compatibility on Chrome, Edge, Safari, and Firefox.</li>
+            <li>Hardened the client against common web threats: secure token storage patterns, XSS-safe rendering, CSRF-aware request flows, and least-privilege UI gating for sensitive account actions.</li>
+            <li>Leveraged AI technologies (GitHub Copilot, Cursor) to accelerate feature implementation, refactoring, debugging, and test authoring while reviewing all AI-assisted output for security and standards.</li>
+            <li>Established quality bars with Jest and React Testing Library; practiced TDD/BDD on critical paths; mentored peers through code reviews and React best practices.</li>
+            <li>Operated in Agile / Scrum: sprint planning, backlog refinement, daily stand-ups, demos, and retrospectives; tracked work in JIRA and released via Azure DevOps CI/CD.</li>
+            <li>Partnered daily with UX (Figma), product, QA, and Java backend teams to translate complex banking requirements into intuitive, production-ready software.</li>
+          </ul>
+          <div class="chips">
+            <span class="chip">React.js</span><span class="chip">TypeScript</span><span class="chip">Redux Toolkit</span>
+            <span class="chip">React Query</span><span class="chip">REST / GraphQL</span><span class="chip">Spring Boot APIs</span>
+            <span class="chip">Apache Kafka</span><span class="chip">Node.js BFF</span><span class="chip">Azure DevOps</span>
+            <span class="chip">Jest</span><span class="chip">WCAG 2.1</span><span class="chip">GitHub Copilot / Cursor</span>
+            <span class="chip">Agile / Scrum</span>
+          </div>
+
+          <p class="kicker" style="margin-top:12px;">Selected initiatives</p>
+          <ul>
+            <li><strong>Banker Compass MFA:</strong> Designed and shipped adaptive OTP and QR authentication that selects the correct MFA path from customer status before high-risk account actions proceed.</li>
+            <li><strong>Audit &amp; reporting workspace:</strong> Built filterable, high-volume reporting UI with React Query caching and Kafka-backed event freshness so bankers work from current, trusted data.</li>
+            <li><strong>Enterprise form platform:</strong> Extracted a shared dynamic-form library with schema-driven validation, cutting duplicate implementation across squads and stabilizing accessibility behavior.</li>
+            <li><strong>Microservice BFF:</strong> Orchestrated multiple Spring Boot services behind a single UI-facing contract, isolating breaking backend changes from the React application.</li>
+          </ul>
+        </div>
+        <footer class="sheet-foot"><span>Anusha Payidiparthi · Senior Full-Stack Developer</span><span>Page 2 of 5</span></footer>
+      </section>
+
+      <!-- PAGE 3 -->
+      <section class="sheet" aria-label="Page 3">
+        <div class="sheet-body">
+          <div class="job-head">
+            <h3>T-Mobile</h3>
+            <strong style="font-size:9.2pt;color:#0b1f33;">Jul 2020 – Nov 2021</strong>
+          </div>
+          <div class="job-meta">
+            <span>Senior Frontend / Full-Stack Developer</span>
+            <span>Hyderabad, India</span>
+          </div>
+          <p class="scope">
+            Led frontend modernization of a customer-service platform by migrating legacy Angular to React.js, and delivered Node.js / Express REST APIs plus MongoDB-backed data access supporting the SPA. Worked against enterprise Java / Spring services used for plans, billing, and account history.
+          </p>
+          <ul>
+            <li>Led Angular-to-React.js migration with component-based architecture, shared UI patterns, and a phased cutover that improved scalability and team velocity without disrupting live customer care.</li>
+            <li>Facilitated requirement analysis and application design workshops with product, UX, and backend stakeholders to sequence migration slices, define API contracts, and de-risk cutover.</li>
+            <li>Designed and implemented Node.js / Express.js RESTful APIs for customer-service workflows, enabling reliable full-stack delivery across UI and backend services.</li>
+            <li>Modeled and queried MongoDB collections (Mongoose) for customer-service views, caching supporting data, and operational lookups—owning database interactions for the SPA’s BFF layer.</li>
+            <li>Integrated React clients with enterprise Java Spring Boot / Spring MVC APIs for plans, offers, and account history; aligned payloads and error handling with existing J2EE service boundaries.</li>
+            <li>Consumed event-driven account and offer updates originating from Apache Kafka pipelines, presenting timely status in agent and customer UIs.</li>
+            <li>Built responsive, accessible React components meeting WCAG 2.1 and enterprise design guidelines for customer-facing and agent-facing service flows.</li>
+            <li>Verified cross-browser compatibility and responsive breakpoints so service-desk and consumer experiences held up across Chrome, Edge, Safari, and Firefox.</li>
+            <li>Improved page-load performance through Webpack code splitting, lazy loading, and bundle optimization on heavier account-history and offer-discovery routes.</li>
+            <li>Applied web security practices on the BFF: authenticated REST contracts, input validation, and least-privilege data exposure to the browser.</li>
+            <li>Strengthened release quality with automated Jasmine/Karma and React test coverage during and after migration, reducing regression defects.</li>
+            <li>Coordinated with global UX, Java backend, QA, and DevOps teams across time zones for zero-downtime releases in an Agile / Scrum operating model.</li>
+          </ul>
+          <div class="chips">
+            <span class="chip">React.js</span><span class="chip">Angular migration</span><span class="chip">Node.js / Express</span>
+            <span class="chip">RESTful APIs</span><span class="chip">MongoDB</span><span class="chip">Spring Boot APIs</span>
+            <span class="chip">Apache Kafka</span><span class="chip">WCAG 2.1</span><span class="chip">Webpack</span>
+            <span class="chip">Agile / Scrum</span>
+          </div>
+
+          <p class="kicker">Platform outcomes</p>
+          <ul>
+            <li>Replaced a legacy AngularJS/Angular surface with a maintainable React component model, making subsequent features cheaper to ship and easier to test.</li>
+            <li>Gave the SPA a stable BFF and MongoDB-backed read models so UI teams were not blocked on every Java service change.</li>
+            <li>Documented UI and accessibility standards so inclusive design was part of the build, not a retrofit.</li>
+          </ul>
+
+          <div class="job-head" style="margin-top:14px;">
+            <h3>Berkadia Commercial Mortgage LLC</h3>
+            <strong style="font-size:9.2pt;color:#0b1f33;">Jan 2018 – Jul 2020</strong>
+          </div>
+          <div class="job-meta">
+            <span>UI / Full-Stack Developer</span>
+            <span>Hyderabad, India</span>
+          </div>
+          <p class="scope">
+            Built an enterprise OCR document-processing platform—Angular UI with Node.js / Express APIs, GraphQL queries, and MongoDB persistence—that converted scanned mortgage documents into searchable, structured data for commercial-mortgage operations.
+          </p>
+          <ul>
+            <li>Developed Angular + TypeScript UIs for upload, processing status, and document management used daily by mortgage operations teams.</li>
+            <li>Gathered requirements from operations and product owners; translated document-lifecycle rules into application design, user stories, and API contracts.</li>
+            <li>Built Node.js / Express RESTful APIs and GraphQL endpoints for OCR processing, file storage, job status, and search—including batch handling for large document volumes.</li>
+          </ul>
+        </div>
+        <footer class="sheet-foot"><span>Anusha Payidiparthi · Senior Full-Stack Developer</span><span>Page 3 of 5</span></footer>
+      </section>
+
+      <!-- PAGE 4 -->
+      <section class="sheet" aria-label="Page 4">
+        <div class="sheet-body">
+          <div class="job-head">
+            <h3>Berkadia Commercial Mortgage LLC — continued</h3>
+            <strong style="font-size:9.2pt;">Jan 2018 – Jul 2020</strong>
+          </div>
+          <ul>
+            <li>Designed MongoDB document models (metadata, OCR text, job state, audit fields) and implemented Mongoose-based database interactions for ingest, status, and retrieval.</li>
+            <li>Created drag-and-drop file upload UX with progress tracking and real-time processing feedback powered by backend job endpoints.</li>
+            <li>Integrated with Java / Spring Boot services used for downstream mortgage systems; coordinated REST and GraphQL contracts with Spring MVC resource owners.</li>
+            <li>Connected async OCR workflows to high-volume intake, including status events consistent with an event-driven (Kafka-style) processing pipeline.</li>
+            <li>Published OpenAPI / Swagger documentation so Java and UI teams could adopt APIs consistently and reduce integration defects.</li>
+            <li>Maintained Jasmine/Karma suites with 80%+ coverage on key modules and delivered iteratively with product owners in Agile sprints.</li>
+            <li>Applied accessibility and cross-browser checks on operations screens so high-volume document work remained usable on standard enterprise browsers.</li>
+          </ul>
+          <div class="chips">
+            <span class="chip">Angular</span><span class="chip">TypeScript</span><span class="chip">Node.js / Express</span>
+            <span class="chip">RESTful APIs</span><span class="chip">GraphQL</span><span class="chip">MongoDB</span>
+            <span class="chip">OpenAPI</span><span class="chip">Spring integration</span><span class="chip">Jasmine / Karma</span>
+            <span class="chip">Agile</span>
+          </div>
+
+          <div class="job-head" style="margin-top:14px;">
+            <h3>Microsoft</h3>
+            <strong style="font-size:9.2pt;color:#0b1f33;">Sep 2016 – Dec 2017</strong>
+          </div>
+          <div class="job-meta">
+            <span>UI Developer</span>
+            <span>Hyderabad, India</span>
+          </div>
+          <p class="scope">
+            Delivered enterprise SPA features for collaboration and innovation-tracking workflows, integrating live REST data from Java / Spring-backed services in an Agile delivery model.
+          </p>
+          <ul>
+            <li>Built enterprise single-page application features with AngularJS (directives, services, filters) for collaboration and innovation-tracking workflows.</li>
+            <li>Participated in application design and requirement analysis with product and engineering, turning workflow rules into reusable UI services and REST integrations.</li>
+            <li>Integrated RESTful APIs for interactive, data-driven UIs; coordinated with Java / Spring MVC service teams on contracts, pagination, and error states.</li>
+            <li>Shipped enhancements and performance fixes with Jasmine unit tests; collaborated with QA on regression coverage.</li>
+            <li>Applied consistent HTML/CSS patterns for cross-browser compatibility inside a large enterprise environment.</li>
+            <li>Worked in Agile / Scrum sprints using Visual Studio and Git, contributing to demos and iterative backlog delivery.</li>
+          </ul>
+          <div class="chips">
+            <span class="chip">AngularJS</span><span class="chip">JavaScript</span><span class="chip">HTML5 / CSS3</span>
+            <span class="chip">RESTful APIs</span><span class="chip">Spring MVC APIs</span><span class="chip">Jasmine</span>
+            <span class="chip">Agile</span>
+          </div>
+
+          <div class="job-head" style="margin-top:14px;">
+            <h3>Smart Data Enterprises &nbsp;|&nbsp; Grandeur Educational Services</h3>
+            <strong style="font-size:9.2pt;color:#0b1f33;">May 2015 – Aug 2016</strong>
+          </div>
+          <div class="job-meta">
+            <span>Software Developer / Associate Software Developer (MEAN Stack)</span>
+            <span>India</span>
+          </div>
+          <p class="scope">
+            Built full-stack MEAN applications for hotel, e-commerce, and SaaS platforms—UI, REST APIs, MongoDB data models, and tests—establishing end-to-end ownership early in career.
+          </p>
+          <ul>
+            <li>Delivered AngularJS + Node.js + Express.js applications with client routing, two-way binding, and modular UI components for product-facing workflows.</li>
+            <li>Designed MongoDB / Mongoose schemas and implemented CRUD database interactions for catalogs, bookings, users, and operational records.</li>
+            <li>Built RESTful APIs for persistence, authentication-adjacent flows, and business CRUD; documented endpoints for consuming clients.</li>
+            <li>Applied academic and project Java / J2EE / Servlet and Spring MVC foundations when integrating with or documenting Java-based partner services.</li>
+            <li>Set quality habits with Jasmine/Karma tests and delivered in Agile teams with frequent requirement clarification and demo cycles.</li>
+          </ul>
+          <div class="chips">
+            <span class="chip">AngularJS</span><span class="chip">Node.js</span><span class="chip">Express</span>
+            <span class="chip">MongoDB / Mongoose</span><span class="chip">REST</span><span class="chip">Java / Spring foundations</span>
+            <span class="chip">Jasmine / Karma</span><span class="chip">Agile</span>
+          </div>
+        </div>
+        <footer class="sheet-foot"><span>Anusha Payidiparthi · Senior Full-Stack Developer</span><span>Page 4 of 5</span></footer>
+      </section>
+
+      <!-- PAGE 5 -->
+      <section class="sheet" aria-label="Page 5">
+        <div class="sheet-body">
+          <h2>Education</h2>
+          <div class="edu">
+            <div>
+              <strong>Bachelor of Technology (B.Tech), Computer Science</strong><br />
+              <span class="muted">Jawaharlal Nehru Technological University (JNTU)</span>
+            </div>
+            <div class="muted">2014</div>
+          </div>
+          <p style="margin-top:6px;">
+            Coursework included Java, J2EE / Servlets, web application development, relational databases, and software engineering—foundations later applied while integrating React and Node applications with Spring MVC, Spring JDBC, and Spring Boot microservices in enterprise programs.
+          </p>
+
+          <h2>Role Alignment — How Experience Maps to This Position</h2>
+          <table class="align-table">
+            <thead>
+              <tr>
+                <th style="width:32%;">Required capability</th>
+                <th>Evidence from delivery</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>React.js — strong hands-on</strong></td>
+                <td>Primary UI stack at Wells Fargo and T-Mobile: TypeScript, Hooks, Redux Toolkit, React Query, reusable libraries, performance, and tests in production banking and telecom apps.</td>
+              </tr>
+              <tr>
+                <td><strong>Java / J2EE / Servlets; Spring / Spring MVC / Spring JDBC; Spring Boot &amp; microservices</strong></td>
+                <td>Day-to-day integration with Java Spring Boot microservices; contract design with Spring MVC / JDBC-backed services; diagnosis of servlet/session/security behavior; B.Tech Java/J2EE foundation.</td>
+              </tr>
+              <tr>
+                <td><strong>RESTful APIs &amp; GraphQL</strong></td>
+                <td>Consumed and built REST APIs (Node/Express and Java service clients); GraphQL at Berkadia and Wells Fargo data access; OpenAPI/Swagger documentation.</td>
+              </tr>
+              <tr>
+                <td><strong>Apache Kafka</strong></td>
+                <td>Near-real-time UIs fed by Kafka-backed audit, alert, and processing topics via gateways/BFF; event-driven OCR/status patterns at Berkadia and T-Mobile.</td>
+              </tr>
+              <tr>
+                <td><strong>MongoDB &amp; database interactions</strong></td>
+                <td>MEAN-stack MongoDB/Mongoose ownership; MongoDB read models at T-Mobile; document metadata and job-state models for OCR at Berkadia; SQL familiarity (MySQL, PostgreSQL).</td>
+              </tr>
+              <tr>
+                <td><strong>AI technologies</strong></td>
+                <td>GitHub Copilot and Cursor used in production delivery for implementation, refactoring, debugging, and test authoring, with human review for security and quality.</td>
+              </tr>
+              <tr>
+                <td><strong>Enterprise application development</strong></td>
+                <td>Fortune 500 banking, telecom, mortgage, and technology platforms; regulated workflows, high traffic, and cross-team release discipline.</td>
+              </tr>
+              <tr>
+                <td><strong>Application design &amp; requirement analysis</strong></td>
+                <td>Story writing, API contract design, Figma collaboration, phased migrations, and acceptance criteria with product, UX, and backend partners.</td>
+              </tr>
+              <tr>
+                <td><strong>Web security, accessibility &amp; cross-browser compatibility</strong></td>
+                <td>MFA/OTP/QR UIs, XSS/CSRF-aware patterns, WCAG 2.1, and Chrome/Edge/Safari/Firefox verification on customer and banker surfaces.</td>
+              </tr>
+              <tr>
+                <td><strong>Agile / Scrum methodologies</strong></td>
+                <td>Sprint planning, refinement, stand-ups, reviews, retrospectives, JIRA, and CI/CD (Jenkins, Azure DevOps) across all listed employers.</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h2>Additional Strengths</h2>
+          <div class="two-col">
+            <div>
+              <p class="kicker" style="margin-top:0;">Engineering practices</p>
+              <ul>
+                <li>Reusable UI libraries and design-system alignment</li>
+                <li>BFF / microservices UI architecture</li>
+                <li>TDD / BDD and pull-request quality gates</li>
+                <li>CI/CD with Azure DevOps, Jenkins, Docker, Git</li>
+                <li>Mentoring, code review, and knowledge sharing</li>
+              </ul>
+            </div>
+            <div>
+              <p class="kicker" style="margin-top:0;">Collaboration</p>
+              <ul>
+                <li>Global, cross-timezone delivery with UX, QA, DevOps, and Java service teams</li>
+                <li>Figma-based design validation before build</li>
+                <li>Zero-downtime release coordination</li>
+                <li>Clear written API and UI documentation</li>
+                <li>Stakeholder-ready demos in Scrum reviews</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <footer class="sheet-foot"><span>Anusha Payidiparthi · Senior Full-Stack Developer</span><span>Page 5 of 5</span></footer>
+      </section>
+    </main>
+  </body>
+</html>

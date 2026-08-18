@@ -9,6 +9,7 @@ export const profile = {
   email: 'anushapayidiparthi406@gmail.com',
   linkedin: 'https://www.linkedin.com/in/anusha-p-678a25251/',
   resumeUrl: '/Anusha-Payidiparthi-Resume.pdf',
+  resumeFileName: 'Anusha-Payidiparthi-Resume.pdf',
   availability: 'Actively interviewing',
   headline: 'I turn complex enterprise workflows into fast, secure, production-ready UI.',
   summary:
